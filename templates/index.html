@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Summarizer Pro</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Advanced AI Text Summarizer</h1>
+        <form method="post" action="/summarize">
+            <label for="input_text">Enter Text:</label><br>
+            <textarea name="input_text" required>{{ input_text or "" }}</textarea><br><br>
+
+            <label>Summary Length:</label><br>
+            Min Length: <input type="number" name="min_len" value="{{ min_len or 30 }}" min="10" max="500">
+            Max Length: <input type="number" name="max_len" value="{{ max_len or 130 }}" min="20" max="1000"><br><br>
+
+            <input type="submit" value="Summarize">
+        </form>
+
+        {% if summary %}
+        <div class="result">
+            <h2>📝 Summary:</h2>
+            <p>{{ summary }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
